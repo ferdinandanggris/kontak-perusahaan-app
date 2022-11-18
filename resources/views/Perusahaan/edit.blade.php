@@ -3,7 +3,7 @@
     <div class="container">
         <div class="mt-3">
             <h5 class="text-center">Edit Perusahaan</h5>
-            <div class="card w-100 m-auto">
+            <div class="card w-100 m-auto" style="max-width: 461px">
                 <div class="card-body">
                     <div class="row">
                         <form action="/perusahaan/{{$perusahaan->id}}" method="post">

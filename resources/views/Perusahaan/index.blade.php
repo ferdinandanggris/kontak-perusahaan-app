@@ -1,7 +1,7 @@
 
 @extends('layouts.main')
 @section('container')
-<div class="container">
+<div class="container" style="max-width: 1000px">
   <div class="d-flex justify-content-between">
       <h5 class="mt-3">Perusahaan</h5>
       <div class="text-end">
@@ -22,21 +22,21 @@
       <div class="card-body">
           <form action="/perusahaan" method="get">
               <div class="row">
-                  <div class="col-md-2 col-sm-4">
+                  <div class="col-md-3 col-sm-4 my-1">
                       <div class="row g-3 align-items-center">
                           <div class="col-auto">
                             <input type="text" id="nama" placeholder="Nama Perusahaan" name="nama" value="{{ app('request')->nama }}" class="form-control form-control-sm">
                           </div>
                         </div>
                       </div>   
-                  <div class="col-md-3 col-sm-4">
+                  <div class="col-md-3 col-sm-4 my-1">
                       <select class="form-select form-select-sm" name="status_dihubungi" aria-label="Default select example">
                         <option {{app('request')->status_dihubungi == 1 ? 'selected' : ''}} value="1">Sudah dihubungi</option>
                         <option {{app('request')->status_dihubungi == 0 ? 'selected' : ''}} value="0">Belum dihubungi</option>
                         <option {{(app('request')->status_dihubungi == -1 || app('request')->status_dihubungi == null) ? 'selected' : ''}} value="-1">Semua</option>
                       </select>
                   </div>
-                  <div class="col-md-3 col-sm-3">
+                  <div class="col-md-3 col-sm-3 my-1">
                       <div class="search">
                           <button type="submit" class="btn btn-sm btn-outline-primary"><i class="bi bi-search"></i> Cari</button>
                         </div>
@@ -48,10 +48,10 @@
           <table class="table table-hover">
               <thead class="bg-light ">
                 <tr>
-                  <th scope="col" style="vertical-align: middle">#</th>
-                  <th scope="col" style="vertical-align: middle">Nama Perusahaan</th>
+                  <th scope="col" width="40" style="vertical-align: middle">#</th>
+                  <th scope="col" style="vertical-align: middle; min-width: 250px">Nama Perusahaan</th>
                   <th scope="col" style="vertical-align: middle">Telepon</th>
-                  <th scope="col" style="vertical-align: middle">Status Dihubungi 
+                  <th scope="col" width="200" style="vertical-align: middle" class="text-center">Status Dihubungi 
                   </th>
                
                   <th scope="col" width="120"></th>
@@ -64,12 +64,12 @@
                       <td style="vertical-align: middle">{{$perusahaan->firstItem() + $i }}</td>
                       <td style="vertical-align: middle">{{$val->nama}}</td>
                       <td style="vertical-align: middle">{{$val->telepon}}</td>
-                      <td style="vertical-align: middle">{{($val->status_dihubungi) ? 'Sudah dihubungi' : 'Belum dihubungi'}} 
+                      <td style="vertical-align: middle" class="text-center"> 
                           <form action="/perusahaan/editStatus/{{$val->id}}" method="post" class="d-inline">@method('put') @csrf<button type="submit" class="badge {{($val->status_dihubungi) ? 'bg-primary' : 'bg-danger'}} border-0"  
                               data-bs-toggle="tooltip" data-bs-placement="top"
                               data-bs-custom-class="custom-tooltip"
-                              data-bs-title="Ubah status">
-                              <i class="bi bi-arrow-repeat"></i></button>
+                              data-bs-title="{{($val->status_dihubungi) ? 'Sudah dihubungi' : 'Belum dihubungi'}}">
+                              <i class="bi {{($val->status_dihubungi) ? 'bi-check-circle' : 'bi-x-circle'}}"></i></button>
                           </form>
                       </td>
                       {{-- <td class="text-break" style="width: 15rem;">{{$val->deskripsi}}</td> --}}
