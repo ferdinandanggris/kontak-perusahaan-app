@@ -50,6 +50,7 @@
                 <tr>
                   <th scope="col" width="40" style="vertical-align: middle">#</th>
                   <th scope="col" style="vertical-align: middle; min-width: 250px">Nama Perusahaan</th>
+                  <th scope="col" style="vertical-align: middle; min-width: 200px">PIC</th>
                   <th scope="col" style="vertical-align: middle">Telepon</th>
                   <th scope="col" width="200" style="vertical-align: middle" class="text-center">Status Dihubungi 
                   </th>
@@ -63,6 +64,7 @@
                   <tr>
                       <td style="vertical-align: middle">{{$perusahaan->firstItem() + $i }}</td>
                       <td style="vertical-align: middle">{{$val->nama}}</td>
+                      <td style="vertical-align: middle">{{$val->pic}}</td>
                       <td style="vertical-align: middle">{{$val->telepon}}</td>
                       <td style="vertical-align: middle" class="text-center"> 
                           <form action="/perusahaan/editStatus/{{$val->id}}" method="post" class="d-inline">@method('put') @csrf<button type="submit" class="badge {{($val->status_dihubungi) ? 'bg-primary' : 'bg-danger'}} border-0"  

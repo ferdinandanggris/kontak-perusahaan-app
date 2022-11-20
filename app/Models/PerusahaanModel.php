@@ -14,7 +14,8 @@ class PerusahaanModel extends Model
         'nama',
         'telepon',
         'status_dihubungi',
-        'deskripsi'
+        'deskripsi',
+        'pic'
     ];
 
     public function getById($id){

@@ -59,6 +59,7 @@ class PerusahaanController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
+            'pic' => 'required|max:255',
             'telepon' => 'required|numeric',
             'status_dihubungi' => 'required',
             'deskripsi' => 'required',
@@ -109,6 +110,7 @@ class PerusahaanController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
+            'pic' => 'required|max:255',
             'telepon' => 'required|numeric',
             'status_dihubungi' => 'required',
             'deskripsi' => 'required',
